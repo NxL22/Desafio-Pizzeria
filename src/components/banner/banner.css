@@ -1,0 +1,14 @@
+.headerText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url(https://free4kwallpapers.com/uploads/originals/2015/05/05/tomato-pizza-presentation.jpg) no-repeat center 53% / cover;
+    margin-bottom: 3em;
+}
+
+.textBanner {
+    font-family: 'Italianno', cursive, sans-serif;
+    font-size: 35px;
+    margin-top: 0;
+}

@@ -1,0 +1,81 @@
+.carrito {
+    padding: 7%;
+    margin-left: 5px;
+    background-color: #F8F8F8; /* color de fondo */
+    border: 3px solid #eee4e4; 
+    border-radius: 5px; 
+    margin: 5%;
+}
+
+.totalItem {
+    margin-right: 15px;
+}
+
+.pizzaDelCarrito {
+    width: 80px;
+    margin-top: 2px;
+    margin-left: 8px;
+    margin: 2px;
+}
+
+.nombrePizza {
+    margin-left: 5px;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.btnMas {
+    background-color: #218838; 
+    border-color: #1e7e34; 
+    font-size: 1rem;
+}
+
+.btnMas:hover {
+    background-color: #1e7e34; 
+    border-color: #1c7430; 
+}
+
+
+.btnMas:active {
+    background-color: #1c7430; 
+    border-color: #1b6d2e; 
+}
+
+.btn-danger {
+    background-color: #C82333;
+    border-color: #BD2130; 
+    font-size: 1rem;
+}
+
+.btn-danger:hover {
+    background-color: #BD2130; 
+    border-color: #AC1F2E; 
+}
+
+.btn-danger:active {
+    background-color: #d62134; 
+    border-color: #e00c21; 
+}
+
+.big strong {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #218838; 
+}
+
+.btn-success {
+    background-color: #28A745;
+    border-color: #00f53a; 
+}
+
+.btn-success:hover {
+    background-color: #218838; /* color de fondo del botón de pagar al pasar el cursor */
+    border-color: #218838; 
+}
+
+
+.btn-success:active {
+    background-color: #1E7E34; 
+    border-color: #1E7E34; 
+}
+

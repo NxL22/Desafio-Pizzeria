@@ -1,0 +1,31 @@
+.detalles {
+    display: flex;
+    padding: 5%;
+    font-family: 'Bellota Text', cursive;
+}
+
+h2 {
+    font-size: 35px;
+}
+p {
+    font-family: 'Bellota Text', cursive;
+    font-size: 19px;
+}
+
+ul {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.precio-btn-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+}
