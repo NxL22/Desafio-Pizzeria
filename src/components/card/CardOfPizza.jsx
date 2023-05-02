@@ -7,21 +7,31 @@ import './card.css'
 
 
 function CardOfPizza() {
-  const { data, total, setTotal, pedido, setPedido } = useContext(AppContext)
-  const navigate = useNavigate()
+  // Obtenemos los datos y funciones del contexto
+  const { data, total, setTotal, pedido, setPedido } = useContext(AppContext);
 
+  // Hook para navegar entre páginas
+  const navigate = useNavigate();
+
+  // Función para agregar una pizza al pedido
   const handleAdd = (event) => {
-    const añadirPizza = data.find((i) => event.target.id === i.id)
-    setTotal(Number(total) + Number(añadirPizza.price))
+    // Buscamos la pizza seleccionada en la lista de pizzas
+    const añadirPizza = data.find((i) => event.target.id === i.id);
 
-    //pedido
+    // Actualizamos el total del pedido
+    setTotal(Number(total) + Number(añadirPizza.price));
+
+    // Verificamos si ya existe la pizza en el pedido
     if (pedido.length > 0) {
+      // Se utiliza el método some para verificar si el producto que se está 
+      // añadiendo al pedido ya existe en el arreglo `pedido` y así poder 
+      // actualizar su cantidad y total, o agregarlo como un nuevo elemento 
+      // en caso contrario.
+      const existe = pedido.some(x => x.id === event.target.id);
 
-      const existe = pedido.some(x => x.id === event.target.id)
-
+      // Si ya existe, actualizamos la cantidad y el precio total de esa pizza en el pedido
       if (existe) {
         const actualizarPedido = pedido.map(v => {
-
           if (v.id === event.target.id) {
             return {
               ...v,
@@ -29,11 +39,11 @@ function CardOfPizza() {
               totalItem: Number(v.totalItem) + Number(añadirPizza.price)
             }
           }
-
           return v
-        })
-        setPedido(actualizarPedido)
+        });
+        setPedido(actualizarPedido);
       }
+      // Si no existe, agregamos la pizza al pedido
       else {
         let actualizarPedido = [...pedido];
         const agregarNuevoItem = {
@@ -47,18 +57,20 @@ function CardOfPizza() {
         actualizarPedido.push(agregarNuevoItem)
         setPedido(actualizarPedido)
       }
-    } else{
+    }
+    // Si el pedido está vacío, agregamos la pizza al pedido
+    else {
       let actualizarPedido = [...pedido];
-        const agregarNuevoItem = {
-          id: añadirPizza.id,
-          img: añadirPizza.img,
-          name: añadirPizza.name,
-          price: añadirPizza.price,
-          totalItem: añadirPizza.price,
-          cantidadItem: 1
-        }
-        actualizarPedido.push(agregarNuevoItem)
-        setPedido(actualizarPedido)
+      const agregarNuevoItem = {
+        id: añadirPizza.id,
+        img: añadirPizza.img,
+        name: añadirPizza.name,
+        price: añadirPizza.price,
+        totalItem: añadirPizza.price,
+        cantidadItem: 1
+      }
+      actualizarPedido.push(agregarNuevoItem)
+      setPedido(actualizarPedido)
     }
   }
 
@@ -72,7 +84,7 @@ function CardOfPizza() {
             <Card key={value.id} className='cardPizza' style={{ width: '18rem' }}>
               <Card.Img variant="top" src={value.img} />
               <Card.Body>
-                <Card.Title>{value.name}</Card.Title>
+                <Card.Title className='title'><strong><big>{value.name}</big></strong></Card.Title>
                 <hr />
                 <Card.Text className='ingredientes'>Ingredientes:
                   <ul>
@@ -88,10 +100,10 @@ function CardOfPizza() {
                   Añadir🛒</Button>
               </Card.Body>
               <hr />
-              <p className='precio'>${value.price}</p>
+              <p className='precio'>{value.price} $</p>
             </Card>
           ))
-        ) : (<div></div>)}
+        ) : (<div>Loading</div>)}
 
       </div>
     </>

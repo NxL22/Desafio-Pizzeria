@@ -1,11 +1,22 @@
+* {
+    margin: 0;
+}
+
 .precio {
+    text-align: center;
+}
+
+.title {
     text-align: center;
 }
 
 .cardPizza {
     border: solid 3px;
     margin: 15px;
+    border: solid 3px;
+    box-shadow: 0 5px 13px rgba(245, 109, 109, 0.999);
 }
+
 
 .cop {
     margin-bottom: 150px;
@@ -23,6 +34,7 @@ ul {
 }
 
 li:before {
-    content: "\1F355"; /* icono unicode de la pizza */
+    content: "\1F355";
+    /* icono unicode de la pizza */
     margin-right: 3px;
 }

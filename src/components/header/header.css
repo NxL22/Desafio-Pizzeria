@@ -5,9 +5,14 @@
     color: antiquewhite;
 }
 
+a {
+    text-decoration: none;
+}
 
 
-.headerText h1, p {
+
+.headerText h1,
+p {
     font-family: 'Italianno', cursive, sans-serif;
     font-size: 45px;
     font-weight: bold;

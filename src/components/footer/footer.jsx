@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-lg-4 col-md-6">
                         <div className="footer-logo">
-                            <p>¡Lo hacemos con amor y el mejor sabor!</p>
+                            <p>¡Lo hacemos con el sabor del amor!</p>
                         </div>
                         <div className="social">
                             <a href="#"><FaFacebook /></a>

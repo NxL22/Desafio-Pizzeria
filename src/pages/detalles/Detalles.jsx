@@ -6,10 +6,17 @@ import { AppContext } from '../../context/Context';
 import HeaderPizza from '../../components/header/HeaderPizza'
 
 const Detalles = () => {
+
+    // Extraemos el valor de la variable id de los parámetros de la URL utilizando el hook useParams
     let { id } = useParams();
+
+    // Extraemos los valores del estado de la aplicación utilizando el hook useContext
     const { pizza, setPizza, data, total, setTotal, pedido, setPedido } = useContext(AppContext)
+
+    // Estado que indica si se está cargando la información de la pizza
     const [loading, setLoading] = useState(true)
 
+    // Efecto que se ejecuta cuando se monta el componente, busca la información de la pizza por su id y la guarda en el estado
     useEffect(() => {
         const idParametro = id.slice(1)
         const idPizza = data.find((x) => idParametro === x.id)
@@ -17,13 +24,19 @@ const Detalles = () => {
         setLoading(false)
     }, [])
 
+    // Función que se ejecuta cuando se agrega una pizza al carrito
     const handleAdd = (event) => {
+
+        // Buscamos la información de la pizza que se va a agregar
         const añadirPizza = data.find((i) => event.target.id === i.id)
+
+        // Actualizamos el total del pedido
         setTotal(Number(total) + Number(añadirPizza.price))
 
-        //pedido
+        // Actualizamos el pedido
         if (pedido.length > 0) {
 
+            // Si la pizza ya existe en el pedido, actualizamos la cantidad y el total de ese item
             const existe = pedido.some(x => x.id === event.target.id)
 
             if (existe) {
@@ -41,6 +54,7 @@ const Detalles = () => {
                 })
                 setPedido(actualizarPedido)
             }
+            // Si la pizza no existe en el pedido, la agregamos como un nuevo item
             else {
                 let actualizarPedido = [...pedido];
                 const agregarNuevoItem = {
@@ -54,7 +68,9 @@ const Detalles = () => {
                 actualizarPedido.push(agregarNuevoItem)
                 setPedido(actualizarPedido)
             }
-        } else {
+        }
+        // Si el pedido está vacío, agregamos la pizza como un nuevo item
+        else {
             let actualizarPedido = [...pedido];
             const agregarNuevoItem = {
                 id: añadirPizza.id,
@@ -68,6 +84,7 @@ const Detalles = () => {
             setPedido(actualizarPedido)
         }
     }
+
 
     return (
         <>

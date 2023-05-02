@@ -8,32 +8,33 @@ import Carrito from './pages/carrito/Carrito.jsx'
 
 
 function App() {
-  const { data, setData } = useContext(AppContext)
+  const { data, setData } = useContext(AppContext) // Se usa useContext pa obtener los valores del contexto (data y setData)
 
-  useEffect(() => {
-    if (data.length === 0) {
+  useEffect(() => { // Se usa el hook useEffect para ejecutar código cuando se monta el componente
+    if (data.length === 0) { // Si data está vacío, entonces hace una petición a la API
       fetch("pizzas.json")
         .then(response =>
           response.json())
-        .then(data => { setData(data) })
+        .then(data => { setData(data) }) // Actualiza el estado del contexto con la respuesta de la API
     }
   }, [])
 
   return (
     <>
-      {data.length !== 0 ? (
+      {data.length !== 0 ? ( // Si data no está vacío, renderiza las rutas del componente Routes
         <Routes>
           <Route exact path="/home" element={<Home />} />
           <Route path="/pizza/:id" element={<Detalles />} />
           <Route path="/carrito" element={<Carrito />} />
         </Routes>
-      ) : (
+      ) : ( // Si data está vacío
         <p>Loading...</p>
       )}
 
     </>
   );
 }
+
 
 export default App;
 
